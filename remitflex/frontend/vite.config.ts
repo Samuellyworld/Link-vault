@@ -9,6 +9,6 @@ export default defineConfig({
     },
     host: true,
     strictPort: true,
-    port: 8001
+    port: 8004
   }
 });

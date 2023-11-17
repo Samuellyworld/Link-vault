@@ -1,4 +1,5 @@
 // importing relevant modules
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import { Response, Request } from "express";
 import Flutterwave from "flutterwave-node-v3";
 
@@ -130,13 +131,14 @@ export const getBanks = async (req: Request, res: Response) => {
     const payload = { country: "NG" };
 
     const response = await flw.Bank.country(payload);
+    console.log(response);
     res.status(200).json({
       data: response
     });
   } catch (error) {
     res.status(500).json({
       error: {
-        message: "Error Fetching Banks"
+        message: `Error Fetching Banks, ${error}`
       }
     });
   }
