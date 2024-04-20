@@ -1,4 +1,4 @@
-import Send from "./send";
+import Send from "./Send";
 
 export default Send;
 
