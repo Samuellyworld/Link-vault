@@ -1,4 +1,4 @@
-import { SendContainer } from "./send.styles";
+import { SendContainer } from "./Send.styles";
 import { Button } from "@/widgets/button";
 import { useNavigate } from "react-router-dom";
 
