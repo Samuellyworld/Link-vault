@@ -1,3 +1,4 @@
-import ConvertMoneyToLocalCurrency from "./Send";
+import Send from "./send";
 
-export default ConvertMoneyToLocalCurrency;
+export default Send;
+

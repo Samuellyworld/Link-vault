@@ -12,22 +12,8 @@ export interface UserActionType {
   SET_CURRENT_USER: string;
 }
 
-export interface CurrentVaultType {
-  address: string;
-  linkvault: string;
-  keypair: {
-    privateKey: Uint8Array;
-    publicKey: Uint8Array;
-  };
-  balances: {
-    amount: any;
-    assets: any;
-    nfts: any;
-    minimumBalance: any;
-  };
-}
 // current user Type
-export interface CurrentType {
-  currentVault: CurrentVaultType | undefined;
+export interface CurrentUserType {
+  currentUser : string | null;
   bills: null | Array<string>;
 }

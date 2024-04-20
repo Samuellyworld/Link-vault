@@ -1,11 +1,11 @@
 // importing relevant module
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CurrentType, CurrentVaultType } from "../../types/store.types";
+import { CurrentUserType } from "@/types/store.types";
 import { USER_ACTION_TYPES } from "./user.action";
 
 // initial state
-const initialState: CurrentType = {
-  currentVault: null,
+const initialState: CurrentUserType = {
+  currentUser: null,
   bills: null
 };
 
@@ -14,8 +14,8 @@ export const userSlice = createSlice({
   name: USER_ACTION_TYPES.SET_CURRENT_USER,
   initialState,
   reducers: {
-    setCurrentUser: (state, action: PayloadAction<CurrentVaultType | null>) => {
-      state.currentVault = action.payload;
+    setCurrentUser: (state, action: PayloadAction<string | null>) => {
+      state.currentUser = action.payload;
     },
     setBills: (state, action: PayloadAction<Array<string> | null>) => {
       state.bills = action.payload;

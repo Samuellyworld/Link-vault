@@ -1,6 +1,6 @@
 import * as billRoutes from "../apiRoutes/billRoutes";
 import { protectedPost } from "../apiHelper";
-import { IBillValidate, IBillCategory } from "../../types/services.types";
+import { IBillValidate, IBillCategory } from "@/types/services.types";
 
 export const billings = {
   getCategories: async (services: IBillCategory) => {

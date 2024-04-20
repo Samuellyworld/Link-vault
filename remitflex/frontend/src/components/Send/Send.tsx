@@ -1,4 +1,4 @@
-import InputField from "../InputField/InputField";
+import { InputField } from "@/widgets/inputField";
 import {
   SendContainer,
   StepContainer,
@@ -6,25 +6,25 @@ import {
   StepNumber,
   DashedBorder,
   StepDiv
-} from "./Send.styles";
-import Button from "../Button/Button";
+} from "./send.styles";
+import { Button } from "@/widgets/button";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { banks } from "../../services/protected/banksAPI";
-import { paymentControl } from "../../services/protected/paymentAPI";
+import { banks } from "@/services/protected/banksAPI";
+import { paymentControl } from "@/services/protected/paymentAPI";
 import Select from "react-select";
-import { customStyles } from "../../utils/customSelectorHelper";
-import { commaFormat } from "../../utils/addons";
+import { customStyles } from "@/utils/select";
+import { commaFormat } from "@/utils/addons";
 import { useSelector } from "react-redux";
-import Spinner from "../Spinner/Spinner";
+import  { Spinner } from "@/widgets/spinner";
 
-const ConvertMoneyToLocalCurrency = () => {
+const Send = () => {
   const [switchBtn, setSwitchBtn] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [banksOptions, setBanksOptions] = useState([]);
   const [account, setAccount] = useState<any>(null);
   const [currentRate, setCurrentRate] = useState<any>(null);
-  const vault = useSelector((state: any) => state.currentUser?.currentVault);
+//   const vault = useSelector((state: any) => state.currentUser?.currentVault);
   const [txId, setTxId] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -110,8 +110,8 @@ const ConvertMoneyToLocalCurrency = () => {
     setIsLoading(true);
     // add a loading spinner to button
     const body = {
-      linkvaulturl: vault?.linkvault,
-      account_bank: data.bankName.code,
+    //   linkvaulturl: vault?.linkvault,
+    //   account_bank: data.bankName.code,
       amount: parseFloat(data.youPay) * currentRate,
       account_number: data.accountNumber,
       currency: "NGN",
@@ -122,7 +122,6 @@ const ConvertMoneyToLocalCurrency = () => {
     setIsLoading(false);
     //@ts-ignore
     setTxId(payment?.data?.txId);
-
     handleNextStep();
   };
 
@@ -354,17 +353,6 @@ const ConvertMoneyToLocalCurrency = () => {
                   navigate("/dashboard");
                 }}
               />
-              <p>
-                View transaction on{" "}
-                <a
-                  className="algo__link"
-                  href={`https://algoexplorer.io/tx/${txId}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  algoexplorer
-                </a>
-              </p>
             </div>
           )}
         </div>
@@ -373,4 +361,4 @@ const ConvertMoneyToLocalCurrency = () => {
   );
 };
 
-export default ConvertMoneyToLocalCurrency;
+export default Send;
