@@ -1,3 +1,3 @@
-import Bills from "./bills";
+import Bills from "./Bills";
 
 export default Bills;
