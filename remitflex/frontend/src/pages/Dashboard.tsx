@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/Header";
 import Overview from "@/components/overview";
 
 const Dashboard = () => {
