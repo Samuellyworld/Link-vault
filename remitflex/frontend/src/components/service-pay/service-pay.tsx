@@ -26,6 +26,7 @@ import { Spinner } from "@/widgets/spinner";
 import { Button } from "@/widgets/button";
 import { paymentControl } from "@/services/protected/paymentAPI";
 
+
 //JSX Component
 const PayBill = () => {
   // use params to get services
@@ -50,6 +51,7 @@ const PayBill = () => {
     label: bill.name
   }));
 
+  //@ts-ignore
   const amount: Number[] = bills?.map((bill: any) => bill.amount);
 
   const [customerName, setCustomerName]: any = useState("");
@@ -72,25 +74,22 @@ const PayBill = () => {
     // const naira = amount[0] === 0 ? nairaAmount : result?.amount
     const customer = category === "electricity" || category === "cable" ? meter : `+${phone}`;
     const body = {
-    //   linkvaulturl: vault.linkvault,
       country: "NG",
       customer: customer,
       amount: Number(nairaAmount),
       // amount_paid : Number(nairaAmount),
       recurrence: "ONCE",
+      reference: Date.now(),
       type: category.toUpperCase()
     };
-    const ans: any = await paymentControl.billPayment(body);
+    //@ts-ignore
+    const ans: any = await billings.billPayment(body);
     // add loading spinner or state
     setIsLoading(false);
-    setTxId(ans?.data?.txId);
-
-    //  if(!bills[0]?.label_name || !customer) {
-    //     dispatch(alert("Fill all fields ⌛️"))
-    //     return setTimeout(() => {
-    //         dispatch(close(""))
-    //     }, 700) spinner-
-    //  }
+    setTxId(ans);
+    if(ans) {
+            return window.location.href = ans.checkoutLink;
+    }
     // handle payment with btc
   };
 
@@ -109,7 +108,7 @@ const PayBill = () => {
     });
     if (response) {
       //@ts-ignore
-      setCustomerName(response?.data.name);
+      setCustomerName(response?.data.data.name);
     }
   };
 
@@ -245,7 +244,7 @@ const PayBill = () => {
       ) : (
         <div className="successful__">
           <img src="/assets/successful.svg" alt="successful" />
-          <p className="successful__text">Your transaction is successful</p>
+          <p className="successful__text">Redirecting to BTC Pay</p>
           <Button
             title="Go to Dashboard"
             onClick={() => {

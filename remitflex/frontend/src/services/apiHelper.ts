@@ -1,6 +1,7 @@
 import { authAxios } from "./authAxios";
 import { clientRoute } from "./routesHelper";
 
+// @ts-ignore
 let clientURL: Location | string = window.location;
 
 export const protectedPost = async (route: string, payload: any) => {

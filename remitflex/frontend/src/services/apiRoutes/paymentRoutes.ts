@@ -4,6 +4,6 @@ const paymentRoute = `${hostRoute}/payment`;
 
 export const currentRate = `${paymentRoute}/rate`;
 
-export const createInvoice = `${paymentRoute}/create-invoice`;
+export const createInvoice = `${paymentRoute}/invoice/create`;
 
-export const billPayment = `${paymentRoute}/bill`;
+// export const billPayment = `${paymentRoute}/bill`;
