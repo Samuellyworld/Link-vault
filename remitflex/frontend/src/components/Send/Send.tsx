@@ -6,7 +6,7 @@ import {
   StepNumber,
   DashedBorder,
   StepDiv
-} from "./send.styles";
+} from "./Send.styles";
 import { Button } from "@/widgets/button";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
