@@ -1,5 +1,5 @@
 import { Button } from "@/widgets/button"
-import { HeroContainer } from "./hero.styles";
+import { HeroContainer } from "./Hero.styles";
 import { useNavigate } from "react-router-dom";
 import { ImageLazyLoad } from "@/widgets/image-loader";
 
