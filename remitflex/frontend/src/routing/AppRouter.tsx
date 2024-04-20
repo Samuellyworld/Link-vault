@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { CustomHashLoader } from "@/widgets/hashloader";
 import Dashboard from "@/pages/Dashboard";
-import Processing from "@/components/send/processing";
+import Processing from "@/components/Send/processing";
 const LandingPage = lazy(() => import("@/pages/Landing"));
 const Bills = lazy(() => import("@/pages/Utilities"));
 const SendMoney = lazy(() => import("../pages/SendMoney"));
