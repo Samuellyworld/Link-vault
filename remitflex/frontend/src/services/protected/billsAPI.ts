@@ -8,5 +8,8 @@ export const billings = {
   },
   validate: async (bill: IBillValidate) => {
     return await protectedPost(billRoutes.validateBill, bill);
+  },
+  billPayment: async (bill : IBillCategory) => {
+    return await protectedPost(billRoutes.createBillInvoice, bill);
   }
 };

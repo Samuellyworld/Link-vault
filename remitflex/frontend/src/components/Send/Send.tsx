@@ -15,7 +15,6 @@ import { paymentControl } from "@/services/protected/paymentAPI";
 import Select from "react-select";
 import { customStyles } from "@/utils/select";
 import { commaFormat } from "@/utils/addons";
-import { useSelector } from "react-redux";
 import  { Spinner } from "@/widgets/spinner";
 
 const Send = () => {
@@ -24,8 +23,6 @@ const Send = () => {
   const [banksOptions, setBanksOptions] = useState([]);
   const [account, setAccount] = useState<any>(null);
   const [currentRate, setCurrentRate] = useState<any>(null);
-//   const vault = useSelector((state: any) => state.currentUser?.currentVault);
-  const [txId, setTxId] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const [data, setData] = useState({
@@ -65,6 +62,7 @@ const Send = () => {
       if (data.accountNumber.length > 7) {
         const body = {
           account_number: data.accountNumber,
+        //   @ts-ignore
           account_bank: data.bankName.code
         };
         const account = await banks.resolveAccount(body);
@@ -106,23 +104,30 @@ const Send = () => {
     }
   };
 
+
+
   const remitPayment = async () => {
     setIsLoading(true);
     // add a loading spinner to button
     const body = {
-    //   linkvaulturl: vault?.linkvault,
-    //   account_bank: data.bankName.code,
+        //@ts-ignore
+      account_bank: data.bankName.code,
+      reference : Date.now(),
       amount: parseFloat(data.youPay) * currentRate,
       account_number: data.accountNumber,
       currency: "NGN",
       narration: data.reason,
       debit_currency: "NGN"
     };
-    const payment = await paymentControl.remitPayment(body);
+    const payment = await paymentControl.createInvoice(body);
     setIsLoading(false);
-    //@ts-ignore
-    setTxId(payment?.data?.txId);
     handleNextStep();
+    if(payment) {
+        //@ts-ignore
+       return window.location.href = payment.checkoutLink;
+    }
+
+    //@ts-ignore
   };
 
   return (
@@ -295,6 +300,7 @@ const Send = () => {
                   <div className="bank__info">
                     <div className="init__header">
                       <span>Bank Name</span>
+                         {/* @ts-ignore */}
                       <span>{data?.bankName.name}</span>
                     </div>
                     <div className="init__header">
@@ -315,7 +321,7 @@ const Send = () => {
                       <span>Recipient gets</span>
 
                       <span>
-                        ₦{commaFormat((parseFloat(data.youPay) ?? 0 * currentRate).toFixed(2))}
+                        ₦{commaFormat(((parseFloat(data.youPay) ?? 0 )* currentRate).toFixed(2))}
                       </span>
                     </div>
                     <div className="init__header">
@@ -346,7 +352,7 @@ const Send = () => {
           {currentStep === 4 && (
             <div className="successful__">
               <img src="/assets/successful.svg" alt="successful" />
-              <p className="successful__text">Your transaction is successful</p>
+              <p className="successful__text">Redirecting to BTC Pay</p>
               <Button
                 title="Go to Dashboard"
                 onClick={() => {
