@@ -2,11 +2,11 @@ FROM node:16.13-alpine
 
 WORKDIR /app
 
-COPY remitflex/frontend/package*.json ./
+COPY client/package*.json ./
 
 RUN npm install --legacy-peer-deps
 
-COPY ./remitflex/frontend/ ./
+COPY ./client/ ./
 
 EXPOSE 8001/tcp
 

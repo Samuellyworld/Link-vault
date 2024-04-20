@@ -6,7 +6,7 @@ import { defaultConfigTypes } from "../types/config.types";
 
 export const isProd: boolean = process.env.ENGINE_ENV === "production";
 export const isDevelopment: boolean = process.env.ENGINE_ENV === "development";
-export const PORT: number = parseInt(process.env.PORT || "8000", 10);
+export const PORT: number = parseInt(process.env.PORT || "8001", 10);
 
 dotenv.config();
 
@@ -26,7 +26,7 @@ export const corsSettings: CorsSettings = isProd
         "https://remitflex.com",
         "https://www.remitflex.com",
         "https://link-vault.netlify.app",
-        "http://localhost:3000"
+        "http://localhost:8004"
       ],
       methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"]
     }

@@ -1,6 +1,5 @@
 // import relevant module
 import { useState } from "react";
-
 // import custom styles
 import {
   ProductsContainer,
@@ -12,23 +11,23 @@ import {
   ProductsBox,
   ProductsBoxIcon,
   ProductsBoxText
-} from "./Bills.styles";
-
+} from "./bills.styles";
 // import select;
 import Select from "react-select";
-
 // import utils objects
-import { customStyles, options, services } from "../../../src/utils/customSelectorHelper";
-import * as billAPI from "../../services/protected/billsAPI";
-
+import { customStyles } from "@/utils/select";
+import { options } from "@/utils/options";
+import { services } from "@/utils/section";
+import * as billAPI from "@/services/protected/billsAPI";
 // use navigate
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setBills } from "../../store/user/user.reducer";
-import Spinner from "../Spinner/Spinner";
-// import { alert, close } from "../../store/alert/alert.modal.reducer";
+import { setBills } from "@/store/user/user.reducer";
+import { Spinner } from "@/widgets/spinner";
+
 
 const Bills = () => {
+
   const [isLoading, setIsLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
   const dispatch = useDispatch();
@@ -37,6 +36,7 @@ const Bills = () => {
   // sort bill payments and link
   const payService = async (category: string) => {
     setIsLoading(true);
+    console.log(category);
     if (category === "false") return;
     const res = await billAPI.billings.getCategories({
       country: selectedOption.value,
@@ -65,7 +65,7 @@ const Bills = () => {
                   options={options}
                   styles={customStyles}
                   defaultValue={selectedOption}
-                  onChange={(e: any) => setSelectedOption(e)}
+                  onChange={(e : any) => setSelectedOption(e)}
                 />
               </div>
             </ProductsTopRight>
@@ -73,12 +73,10 @@ const Bills = () => {
 
           <ProductsBoxesContainer>
             {services?.map((service: any, i: number) => (
-              // <Link to ={`/payment/${service?.name}`}>
               <ProductsBox notPart={false} key={i} onClick={() => payService(service?.category)}>
                 <ProductsBoxIcon src={service?.image} />
                 <ProductsBoxText>{service?.name}</ProductsBoxText>
               </ProductsBox>
-              // </Link>
             ))}
             <ProductsBox notPart={true}>
               <ProductsBoxText>More to come!</ProductsBoxText>

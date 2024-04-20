@@ -1,11 +1,12 @@
-import AppRouter from "./routing/AppRouter";
+import AppRouter from "./routing/AppRouter"
 
-const App = () => {
+function App() {
+
   return (
-    <div className="main">
+    <>
       <AppRouter />
-    </div>
-  );
-};
+    </>
+  )
+}
 
-export default App;
+export default App

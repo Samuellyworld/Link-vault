@@ -6,9 +6,17 @@ export const HeroContainer = styled.div`
   align-items: center;
   padding:1rem 0.5rem 0 2rem;
   width: 100%;
+  height: 40rem;
+
+  @media screen and (max-width : 500px) {
+    height : unset;
+  }
+
+  .bitcoin {
+   margin-top: 1rem;
+  }
 
   .hero__left {
-    // margin-bottom:22rem;
     margin-top: -7rem;
     display:flex;
     flex-direction:column;
@@ -40,7 +48,7 @@ export const HeroContainer = styled.div`
       @media screen and (max-width: 1000px) {
         font-size:45px;
         line-height:normal;
-        letter-spacing:0.1rem;
+        letter-spacing:0.2rem;
         white-space: normal;
        }
       
@@ -86,7 +94,6 @@ export const HeroContainer = styled.div`
       @media screen and (max-width: 800px) {
         width: 50%;
         margin-top:1rem;
-        // padding: 0.3rem 3rem;
         align-items:center;
         margin : auto;
       }
@@ -103,11 +110,13 @@ export const HeroContainer = styled.div`
         font-size: 1rem;
      }
    }
-   .powerImg{
-     width:22%;
-    @media screen and (max-width: 760px) {
-      width: 6rem;
+
+   .voltage {
+    padding : 0rem 0.2rem;
+    font-weight: 700;
    }
+   .powerImg{
+      width: 1.5rem;
    }
    .break{
     @media screen and (max-width:900px){
@@ -123,6 +132,7 @@ export const HeroContainer = styled.div`
 
   .hero__right {
    width:45rem;
+
     @media screen and (max-width: 1350px) {
       img {
         width: 40rem;

@@ -1,5 +1,5 @@
 // user action types
-import { UserActionType } from "../../types/store.types";
+import { UserActionType } from "@/types/store.types";
 
 // user action types
 export const USER_ACTION_TYPES: UserActionType = {

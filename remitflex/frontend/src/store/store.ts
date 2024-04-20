@@ -11,7 +11,7 @@ import {
   REGISTER
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { PersistConfigType } from "../types/store.types";
+import { PersistConfigType } from "@/types/store.types";
 import userReducer from "./user/user.reducer";
 
 //persist config
