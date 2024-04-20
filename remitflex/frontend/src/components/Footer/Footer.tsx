@@ -1,5 +1,5 @@
 import { Button } from "@/widgets/button";
-import { Main, Container } from "./footer.styles";
+import { Main, Container } from "./Footer.styles";
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
