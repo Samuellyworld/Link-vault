@@ -1,5 +1,5 @@
 import Header  from "@/components/Header";
-import Send from "@/components/send";
+import Send from "@/components/Send";
 
 const SendMoney = () => {
   return (
