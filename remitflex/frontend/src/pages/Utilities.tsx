@@ -1,5 +1,5 @@
-import Bills from "@/components/bills";
-import Header from "@/components/header";
+import Bills from "@/components/Bills";
+import Header from "@/components/Header";
 
 const BillsPage = () => {
   return (
