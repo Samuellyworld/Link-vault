@@ -11,7 +11,7 @@ import {
   ProductsBox,
   ProductsBoxIcon,
   ProductsBoxText
-} from "./bills.styles";
+} from "./Bills.styles";
 // import select;
 import Select from "react-select";
 // import utils objects
