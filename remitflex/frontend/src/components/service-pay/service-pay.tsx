@@ -88,7 +88,7 @@ const PayBill = () => {
     setIsLoading(false);
     setTxId(ans);
     if(ans) {
-            return window.location.href = ans.checkoutLink;
+            return window.open(ans.checkoutLink, '_blank');
     }
     // handle payment with btc
   };
